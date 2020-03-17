@@ -1,1 +1,205 @@
+#include <iostream>
 
+using namespace std;
+
+//1. Vamos a declarar una clase cuyos objetos van a ser los elementos que vamos
+//a guardar en un arreglo de objetos de esa clase
+
+
+class listado
+{
+    int valor = 0;
+    string nombre;
+
+
+    public:
+    void setValor(int x)
+    {
+        valor = x;
+    }
+
+    int getValor()
+    {
+        return valor;
+    }
+};
+
+
+//2. Declarar una clase cuyos objetos sirvan para almacenar una cantidad de objetos del tipo de la clase Elemento
+
+class listaDeObjetos
+{
+    listado arreglo[20];
+    int cuentaListado = 0;
+
+    public:
+    void agregarListado(int valor)
+    {
+        listado temporal;
+        temporal.setValor(valor);
+
+
+        if(cuentaListado > 19)
+            cout<<"El listado esta lleno, no se pueden guardar mas objetos" << endl;
+        else
+        {
+            arreglo[cuentaListado] = temporal;
+            cuentaListado++;
+        }
+    }
+
+
+
+    void retirarListado()
+    {
+        if(cuentaListado > 19)
+        {
+            arreglo[19].setValor(0);
+            cuentaListado = 19;
+        }
+        else
+        {
+            arreglo[cuentaListado].setValor(0);
+            cuentaListado--;
+        }
+
+
+        if(cuentaListado < 0)
+        {
+            cout<<"El arreglo ya esta vacia"<<endl;
+            cuentaListado = 0;
+        }
+    }
+
+    int obtenerListado(unsigned int posicion)
+    {
+        if(posicion > 19)
+        {
+            cout<<"Posicion erronea!!!"<<endl;
+            return -1;
+        }
+
+        return arreglo[posicion].getValor();
+    }
+
+    void mostrarArreglo()
+    {
+        for(int i=0; i<cuentaListado; ++i)
+            cout<<arreglo[i].getValor()<<",";
+
+        cout<<endl;
+    }
+
+};
+
+
+
+
+
+int main()
+{
+    int valor = 0;
+    listado objeto1;
+
+    objeto1.setValor(17);
+
+    cout<< objeto1.getValor() <<endl;
+
+    listaDeObjetos miArreglo;
+
+    for(int i=0; i<25; ++i)
+        miArreglo.agregarListado(i);
+    //cout<<miArreglo.obtenerListado(20)<<endl;
+
+
+
+    int opcion=0;
+    cout<<"--------------------MENU----------------------"<<endl;
+    cout<<"-----------------------------------------------"<<endl;
+    cout<<"1. si quiere agregar objetos a la lista"<<endl;
+    cout<<"2. si quiere retirar objetos a la lista"<<endl;
+    cout<<"3. si quiere verlos objetos a la lista"<<endl;
+    cin>>opcion;
+    switch (opcion) {
+        case 1:
+        cout<<"por favor ingrese valor que desea agregar a la lista"<<endl;
+        cin>>valor;
+
+        break;
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*miArreglo.mostrarArreglo();
+
+    miArreglo.retirarListado();
+    miArreglo.mostrarArreglo();
+
+    miArreglo.retirarListado();
+    miArreglo.mostrarArreglo();
+
+    miArreglo.retirarListado();
+    miArreglo.mostrarArreglo();
+
+    miArreglo.retirarListado();
+    miArreglo.mostrarArreglo();
+
+    miArreglo.retirarListado();
+    miArreglo.mostrarArreglo();*/
+
+
+    /*miColeccion.eliminarElemento();
+    miColeccion.traerTodaLaColeccion();
+
+    miColeccion.eliminarElemento();
+    miColeccion.traerTodaLaColeccion();
+
+    miColeccion.eliminarElemento();
+    miColeccion.traerTodaLaColeccion();
+
+    miColeccion.eliminarElemento();
+    miColeccion.traerTodaLaColeccion();
+
+    miColeccion.eliminarElemento();
+    miColeccion.traerTodaLaColeccion();
+
+    miColeccion.eliminarElemento();
+    miColeccion.traerTodaLaColeccion();
+
+    miColeccion.eliminarElemento();
+    miColeccion.traerTodaLaColeccion();
+
+    miColeccion.agregarElemento(20);
+    miColeccion.traerTodaLaColeccion();*/
+
+
+    return 0;
+
+}
