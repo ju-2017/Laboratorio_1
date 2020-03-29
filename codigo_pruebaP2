@@ -1,0 +1,88 @@
+#include <iostream>
+#include<stdlib.h>
+using namespace std;
+
+class cita{
+  string nombre1, nombre2, lugar;
+  friend void claseExterna(cita &, string, string , string);
+  public:
+  cita(string, string, string);
+  void mostar_cita();
+  
+};
+/*void claseExterna(cita &c, string n1, string n2, string lg){
+  c.nombre1 = n1;
+  c.nombre2 = n2;
+  c.lugar = lg;
+
+}*/
+
+
+
+cita::cita(string _nombre1, string _nombre2, string _lugar ){
+    nombre1=_nombre1;
+    nombre2=_nombre2;
+    lugar=_lugar;
+
+}
+
+class fecha{
+  private:
+  int dia, mes, anio, hora;
+  public:
+  fecha(int, int, int, int);
+
+  void mostrarFecha();
+};
+
+fecha::fecha(int _dia, int _mes,int _anio, int _hora){
+  anio = _anio;
+  mes = _mes;
+  dia = _dia;
+  hora = _hora;
+}
+
+void fecha::mostrarFecha(){
+    if (dia<=0 or  dia>31){
+        cout<<"dia no esta en el rango establecido"<<endl;
+    }
+
+    if (mes<=0 or mes>12){
+        cout<<"mes no esta en el rango establecido"<<endl;
+    }
+    if (hora>2400){
+        cout<<"hora no esta en el rango establecido"<<endl;
+    }
+    if (mes==2 && dia>29){
+        cout<<"mes de febrero no tiene mas de 29 dias"<<endl;
+    }
+    else {
+        cout<<" la fecha de la cita es:"<<dia<<"/"<<mes<<"/"<<anio<<"/"<<"Hora:"<<hora<<endl;
+    }
+}
+
+void cita::mostar_cita(){
+  cout<<" los citados son:"<<nombre1<<" y "<<nombre2<<"  en "<<lugar<<endl;
+}
+void claseExterna(cita &c, string n1, string n2, string lg){
+  c.nombre1 = n1;
+  c.nombre2 = n2;
+  c.lugar = lg;
+
+}
+
+
+int main(){
+  fecha hoy(31,2,2020,600);
+  hoy.mostrarFecha();
+
+  cita dia1("juan","jhon", "medellin");
+  dia1.mostar_cita();
+  
+  claseExterna(cita "Camilo", "Laura", "Cali");
+  cita.mostar_cita();
+ 
+
+
+  return 0;
+}
