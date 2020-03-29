@@ -1,1 +1,92 @@
+#include <iostream>
+#include<stdlib.h>
+using namespace std;
+
+class cita{
+  string nombre1, nombre2, lugar;
+  friend void claseExterna(string, string , string);
+  public:
+  cita(string, string, string);
+  void mostar_cita();
+  void crear();
+
+};
+void claseExterna(string, string , string){
+    cita dia1("juan","jhon", "medellin");
+    dia1.mostar_cita();
+    cita nuevo("Camilo", "Laura", "Cali");
+    nuevo.mostar_cita();
+    cita nuevo2("Luis", "juliam", "Bogota");
+    nuevo2.mostar_cita();
+    cita nuevo3("Andres", "felipe", "Bucaramanga");
+    nuevo3.mostar_cita();
+    cita nuevo4("juliana", "yuliza", "Bolivar");
+    nuevo4.mostar_cita();
+    cita nuevo5("cristian", "Lorena", "Andes");
+    nuevo5.mostar_cita();
+    cita nuevo6("sebastian", "gisel ", "Barancabermeja");
+    nuevo6.mostar_cita();
+
+
+
+}
+
+
+
+cita::cita(string _nombre1, string _nombre2, string _lugar ){
+    nombre1=_nombre1;
+    nombre2=_nombre2;
+    lugar=_lugar;
+
+}
+
+
+
+
+
+class fecha{
+  private:
+  int dia, mes, anio, hora;
+  public:
+  fecha(int, int, int, int);
+
+  void mostrarFecha();
+};
+
+fecha::fecha(int _dia, int _mes,int _anio, int _hora){
+  anio = _anio;
+  mes = _mes;
+  dia = _dia;
+  hora = _hora;
+}
+
+void fecha::mostrarFecha(){
+    if (dia<=0 or  dia>31){
+        cout<<"dia no esta en el rango establecido"<<endl;
+    }
+
+    if (mes<=0 or mes>12){
+        cout<<"mes no esta en el rango establecido"<<endl;
+    }
+    if (hora>2400){
+        cout<<"hora no esta en el rango establecido"<<endl;
+    }
+    if (mes==2 && dia>29){
+        cout<<"mes de febrero no tiene mas de 29 dias"<<endl;
+    }
+    else {
+        cout<<" la fecha de la cita es:"<<dia<<"/"<<mes<<"/"<<anio<<"/"<<"Hora:"<<hora<<endl;
+    }
+}
+
+void cita::mostar_cita(){
+  cout<<" los citados son:"<<nombre1<<" y "<<nombre2<<"  en "<<lugar<<endl;
+
+
+}
+int main(){
+  fecha hoy(4,2,2020,600);
+  hoy.mostrarFecha();
+  return 0;
+}
 
