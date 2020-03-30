@@ -1,0 +1,134 @@
+#include <iostream>
+
+using namespace std;
+
+
+
+
+class A
+{
+    int serial;
+    string nombre;
+    friend void nuevoObjetolitsa(A &, int , string);
+
+
+    public:
+    void setserial(int x)
+    {
+        serial = x;
+    }
+
+    int getserial()
+    {
+        return serial;
+    }
+};
+
+
+
+
+class listaDeObjetos
+{
+    A arreglo[20];
+    int cuentaListado = 0;
+
+    public:
+    void agregarListado(int serial)
+    {
+        A temporal;
+        temporal.setserial(serial);
+
+
+        if(cuentaListado > 19)
+            cout<<"El listado esta lleno, no se pueden guardar mas objetos" << endl;
+        else
+        {
+            arreglo[cuentaListado] = temporal;
+            cuentaListado++;
+        }
+    }
+
+
+
+    void retirarListado()
+    {
+        if(cuentaListado > 19)
+        {
+            arreglo[19].setserial(0);
+            cuentaListado = 19;
+        }
+        else
+        {
+            arreglo[cuentaListado].setserial(0);
+            cuentaListado--;
+        }
+
+
+        if(cuentaListado < 0)
+        {
+            cout<<"El arreglo ya esta vacia"<<endl;
+            cuentaListado = 0;
+        }
+    }
+
+    int obtenerListado(unsigned int posicion)
+    {
+        if(posicion > 19)
+        {
+            cout<<"Posicion erronea!!!"<<endl;
+            return -1;
+        }
+
+        return arreglo[posicion].getserial();
+    }
+
+    void mostrarArreglo()
+    {
+        for(int i=0; i<cuentaListado; ++i)
+            cout<<arreglo[i].getserial()<<",";
+
+        cout<<endl;
+    }
+
+};
+
+
+void nuevoObjetolitsa(A &t, int _serial, string _nombre){
+    t.serial=_serial;
+    t.nombre=_nombre;
+
+}
+
+
+
+int main()
+{
+
+    A objeto1;
+    
+    objeto1.setserial(15);
+
+    cout<< objeto1.getserial() <<endl;
+
+    listaDeObjetos miserial;
+
+    for(int i=0; i<20; ++i)
+        miserial.agregarListado(i);
+    cout<<miserial.obtenerListado(15)<<endl;
+
+
+    miserial.mostrarArreglo();
+
+    miserial.retirarListado();
+    miserial.mostrarArreglo();
+    
+   
+    
+    
+
+
+
+
+    return 0;
+
+}
