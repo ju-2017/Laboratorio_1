@@ -4,34 +4,12 @@ using namespace std;
 
 class cita{
   string nombre1, nombre2, lugar;
-  friend void claseExterna(string, string , string);
+  friend void claseExterna(cita &, string, string , string);
   public:
   cita(string, string, string);
   void mostar_cita();
-  void crear();
 
 };
-void claseExterna(string, string , string){
-    cita dia1("juan","jhon", "medellin");
-    dia1.mostar_cita();
-    cita nuevo("Camilo", "Laura", "Cali");
-    nuevo.mostar_cita();
-    cita nuevo2("Luis", "juliam", "Bogota");
-    nuevo2.mostar_cita();
-    cita nuevo3("Andres", "felipe", "Bucaramanga");
-    nuevo3.mostar_cita();
-    cita nuevo4("juliana", "yuliza", "Bolivar");
-    nuevo4.mostar_cita();
-    cita nuevo5("cristian", "Lorena", "Andes");
-    nuevo5.mostar_cita();
-    cita nuevo6("sebastian", "gisel ", "Barancabermeja");
-    nuevo6.mostar_cita();
-
-
-
-}
-
-
 
 cita::cita(string _nombre1, string _nombre2, string _lugar ){
     nombre1=_nombre1;
@@ -39,10 +17,6 @@ cita::cita(string _nombre1, string _nombre2, string _lugar ){
     lugar=_lugar;
 
 }
-
-
-
-
 
 class fecha{
   private:
@@ -81,12 +55,27 @@ void fecha::mostrarFecha(){
 
 void cita::mostar_cita(){
   cout<<" los citados son:"<<nombre1<<" y "<<nombre2<<"  en "<<lugar<<endl;
-
+}
+void claseExterna(cita &c, string n1, string n2, string lg){
+  c.nombre1 = n1;
+  c.nombre2 = n2;
+  c.lugar = lg;
 
 }
+
+
 int main(){
-  fecha hoy(4,2,2020,600);
+  fecha hoy(31,2,2020,600);
   hoy.mostrarFecha();
+
+  cita dia1("juan","jhon", "medellin");
+  dia1.mostar_cita();
+
+  claseExterna(dia1, "Camilo", "Laura", "Cali");
+  dia1.mostar_cita();
+
+
+
   return 0;
 }
 
